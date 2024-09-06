@@ -31,6 +31,8 @@ Same thing for `keyauth.win.crt` Certificate but Just pressing next works fine (
 2. Add the following line:
 ```
 127.0.0.1 keyauth.win
+127.0.0.1 keyauth.cc
+they might use a custom domain so same thing for the custom domain
 ```
 
 install [OpenSSL binary builds for Windows](https://kb.firedaemon.com/support/solutions/articles/4000121705#Download-OpenSSL).
