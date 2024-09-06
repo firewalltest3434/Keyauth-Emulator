@@ -331,7 +331,7 @@ void Handler::Process(const httplib::Request& req, httplib::Response& res)
 
     if (type == "ban")
     {
-        HandleSession(data, req, res);
+        HandleBan(data, req, res);
         return;
     }
 
