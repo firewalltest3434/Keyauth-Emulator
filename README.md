@@ -22,9 +22,9 @@ Before you can use the emulator, you need to do two things:
 2. Click "Install certificate"
 3. Select "Local Machine," then click "Next"
 4. Select "Place all certificates in the following store," click "Browse" and select "Trusted Root Certification Authorities"
-5. Click "Finish"
+5. Click "Finish" ( only needed to do 1 time )
 
-Same thing for `keyauth.win.crt` Certificate but Just pressing next works fine
+Same thing for `keyauth.win.crt` Certificate but Just pressing next works fine ( also 1 time also )
 
 **Redirect API URLs to localhost using hosts file**
 1. Open `C:\Windows\System32\drivers\etc\hosts`
@@ -32,6 +32,11 @@ Same thing for `keyauth.win.crt` Certificate but Just pressing next works fine
 ```
 127.0.0.1 keyauth.win
 ```
+
+install [OpenSSL binary builds for Windows](https://kb.firedaemon.com/support/solutions/articles/4000121705#Download-OpenSSL).
+
+**BEFORE STARTING MAKE SURE YOU HAVE THE CERTIFICATES INSTALLED AND THE FOLDER certs with all the files from the certificates**
+
 
 **DONE**
 
