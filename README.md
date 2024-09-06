@@ -6,6 +6,8 @@ github.com/SamuelTulach for Creating this
 
 github.com/yerrroo for fixing it in his fork
 
+I just updated it and added some more handling for keyauth applications etc
+
 ## Usage
 ### Step 1: Obtain application secret
 Example of doing so: [Click me](https://player.vimeo.com/video/1006943145?) 
