@@ -7,7 +7,7 @@ github.com/yerrroo for fixing it in his fork
 
 ## Usage
 ### Step 1: Obtain application secret
-Example of doing so: https://vimeo.com/manage/videos/1006943145, 
+Example of doing so: [Click me](https://player.vimeo.com/video/1006943145?) 
 
 you can use regex `^[a-zA-Z0-9]{64}$` to show only strings that match with the secret format. ( Proccess Hacker )
 
