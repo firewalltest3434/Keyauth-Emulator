@@ -45,4 +45,5 @@ Once that is done, open `EmuAuth.exe` and enter the application secret. All traf
 ## How to prevent this from happening to my own software?
 
 Get a selfhost and make sure you are using a custom proxy between your Selfhost & The client
+
 Another solution would not using an authentication system like this but a selfhosted one with more security
