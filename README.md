@@ -1,13 +1,6 @@
 # Keyauth Server Emulator
 For educational purposes only. Use responsibly on your own programs to test them against these trivial methods.
 
-# Credits
-github.com/SamuelTulach for Creating this
-
-github.com/yerrroo for fixing it in his fork
-
-I just updated it and added some more handling for keyauth applications etc
-
 ## Usage
 ### Step 1: Obtain application secret
 Example of doing so: [Click me](https://player.vimeo.com/video/1006943145?) 
@@ -52,8 +45,16 @@ Once that is done, open `EmuAuth.exe` and enter the application secret. All traf
 
 **Tipp** They are already generated but if they expire you would need to regenerate them!
 
-## How to prevent this from happening to my own software?
+## How to host the Emulator on a RDP
 
-Get a selfhost and make sure you are using a custom proxy between your Selfhost & The client
+1. Get a Windows RDP
+2. Install The Emulator on the RDP ( like u did on your PC )
+3. Disable Firewall or let port 443 be enabled
+4. Now just use instead of 127.0.0.1 in the hosts file the ip of the rdp
 
-Another solution would not using an authentication system like this but a selfhosted one with more security
+# Credits
+github.com/SamuelTulach for Creating this
+
+github.com/yerrroo for fixing it in his fork
+
+I just updated it and added some more handling for keyauth applications etc
