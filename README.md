@@ -48,9 +48,10 @@ Once that is done, open `EmuAuth.exe` and enter the application secret. All traf
 ## How to host the Emulator on a RDP
 
 1. Get a Windows RDP
-2. Install The Emulator on the RDP ( like u did on your PC )
-3. Disable Firewall or let port 443 be enabled
-4. Now just use instead of 127.0.0.1 in the hosts file the ip of the rdp
+2. Recompile the Emulator with the server IP instead of 127.0.0.1
+3. Install The Emulator on the RDP ( like u did on your PC )
+4. Disable Firewall or let port 443 be enabled
+5. Now just use instead of 127.0.0.1 in the hosts file the ip of the rdp
 
 # Credits
 github.com/SamuelTulach for Creating this
