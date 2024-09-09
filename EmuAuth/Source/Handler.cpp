@@ -12,7 +12,7 @@ void Handler::HandleInit(const httplib::Params& data, const httplib::Request&, h
     nlohmann::json output = {
       {"success", true},
       {"message", "Initialized"},
-      {"sessionid", "niggas"},
+      {"sessionid", "emulatedlol"},
       {"appinfo", {
         {"numUsers", "N/A"},
         {"numOnlineUsers", "N/A"},
