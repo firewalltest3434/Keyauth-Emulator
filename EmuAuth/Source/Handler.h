@@ -9,5 +9,7 @@ namespace Handler
     void HandleFile(const httplib::Params& data, const httplib::Request&, httplib::Response& res);
     void HandleSession(const httplib::Params& data, const httplib::Request&, httplib::Response& res);
     void HandleBan(const httplib::Params& data, const httplib::Request&, httplib::Response& res);
+    void HandleVar(const httplib::Params& data, const httplib::Request&, httplib::Response& res);
+    void HandleLog(const httplib::Params& data, const httplib::Request&, httplib::Response& res);
     void Process(const httplib::Request&, httplib::Response& res);
 }

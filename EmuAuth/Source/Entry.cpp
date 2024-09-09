@@ -1,4 +1,6 @@
 #include "Global.h"
+#include <iostream>
+
 
 int main()
 {

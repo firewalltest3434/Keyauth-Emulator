@@ -16,6 +16,8 @@
 
 namespace Global
 {
+    inline std::string VersionLink = "https://pastebin.com/raw/rhKCwwYg";
+    inline std::string Version = "1.2";
     inline std::string Secret;
     inline std::string EncryptionKey;
 }

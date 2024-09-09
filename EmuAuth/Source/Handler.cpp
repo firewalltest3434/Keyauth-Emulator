@@ -6,18 +6,18 @@ void Handler::HandleInit(const httplib::Params& data, const httplib::Request&, h
 
     std::string clientKey = data.find("enckey")->second;
     Console::Debug("Encryption key: %s", clientKey.c_str());
-
+ 
     Global::EncryptionKey = clientKey + "-" + Global::Secret;
 
     nlohmann::json output = {
       {"success", true},
       {"message", "Initialized"},
-      {"sessionid", "deadfeed"},
+      {"sessionid", "niggas"},
       {"appinfo", {
         {"numUsers", "N/A"},
         {"numOnlineUsers", "N/A"},
         {"numKeys", "N/A"},
-        {"version", "2.0"},
+        {"version", "1.1"},
         {"customerPanelLink", "https://keyauth.cc/panel/xxx"},
       }},
       {"newSession", true},
@@ -188,7 +188,7 @@ void Handler::HandleSession(const httplib::Params& data, const httplib::Request&
     nlohmann::json output =
     {
     {"success", true},
-    {"message", "Logged in!"},
+    {"message", "I am real gangster!"},
     };
 
     std::string json = output.dump();
@@ -201,6 +201,57 @@ void Handler::HandleSession(const httplib::Params& data, const httplib::Request&
     res.set_content(json, "application/json");
 
     Console::Success("Session Check request handled");
+}
+
+void Handler::HandleVar(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
+{
+    Console::Info("Handling API Var Check...");
+
+    std::string sessionId = data.find("sessionid")->second;
+    Console::Debug("Session ID: %s", sessionId.c_str());
+
+    nlohmann::json output =
+    {
+    {"success", true},
+    {"message", "idk"},
+    {"nonce", Utils::GenerateRandomString(32)}
+    };
+
+    std::string json = output.dump();
+    std::string checksum = Utils::GenerateHMAC(Global::EncryptionKey, json);
+
+    Console::Debug("Using signature: %s", checksum.c_str());
+    Console::Debug("JSON: %s", json.c_str());
+
+    res.set_header("signature", checksum);
+    res.set_content(json, "application/json");
+
+    Console::Success("Var shit handled");
+}
+
+void Handler::HandleLog(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
+{
+    Console::Info("Handling Log Check...");
+
+    std::string sessionId = data.find("sessionid")->second;
+    Console::Debug("Session ID: %s", sessionId.c_str());
+
+    nlohmann::json output =
+    {
+    {"success", true},
+    {"message", "No logs for me hehehe"},
+    };
+
+    std::string json = output.dump();
+    std::string checksum = Utils::GenerateHMAC(Global::EncryptionKey, json);
+
+    Console::Debug("Using signature: %s", checksum.c_str());
+    Console::Debug("JSON: %s", json.c_str());
+
+    res.set_header("signature", checksum);
+    res.set_content(json, "application/json");
+
+    Console::Success("Log request handled");
 }
 
 void Handler::HandleBan(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
@@ -329,7 +380,17 @@ void Handler::Process(const httplib::Request& req, httplib::Response& res)
         return;
     }
 
+    if (type == "log")
+    {
+        HandleLog(data, req, res);
+        return;
+    }
 
+    if (type == "var")
+    {
+        HandleVar(data, req, res);
+        return;
+    }
 
     Console::Error("Unknown API request type");
 }
