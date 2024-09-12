@@ -1,6 +1,3 @@
-# Keyauth Server Emulator
-For educational purposes only. Use responsibly on your own programs to test them against these trivial methods.
-
 ## Usage
 ### Step 1: Obtain application secret
 Example of doing so: [Click me](https://player.vimeo.com/video/1006943145?) 
@@ -24,8 +21,6 @@ Same thing for `keyauth.win.crt` Certificate but Just pressing next works fine (
 2. Add the following line:
 ```
 127.0.0.1 keyauth.win
-127.0.0.1 keyauth.cc
-they might use a custom domain so same thing for the custom domain
 ```
 
 install [OpenSSL binary builds for Windows](https://kb.firedaemon.com/support/solutions/articles/4000121705#Download-OpenSSL).
