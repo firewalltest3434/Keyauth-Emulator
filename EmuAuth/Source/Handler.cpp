@@ -392,5 +392,17 @@ void Handler::Process(const httplib::Request& req, httplib::Response& res)
         return;
     }
 
+    if (type == "setvar")
+    {
+        HandleVar(data, req, res);
+        return;
+    }
+
+    if (type == "getvar")
+    {
+        HandleVar(data, req, res);
+        return;
+    }
+
     Console::Error("Unknown API request type");
 }
