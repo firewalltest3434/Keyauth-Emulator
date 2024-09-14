@@ -3,13 +3,14 @@
 The Keyauth Emulator can simulate nearly all aspects of Keyauth, including:
 
 Full simulation of the initialization process, including the login system.
-Features such as logs, bans, and blacklists are disabled to provide a non disturbing experience.
-With this project, you can effectively run Keyauth-based applications without relying on the real Keyauth system.
+Features such as logs, bans, and blacklists are disabled
+With this project, you can effectively run Keyauth-based applications Selfhosted 
 
 DISCLAIMER:
 
 This tool is intended solely for educational purposes,
-such as learning how Keyauth works. Use it only on applications that you own or have explicit permission to use.
+such as learning how Keyauth works. 
+Use it only on applications that you own or have explicit permission to use.
 ```
 <details>
   <summary>Click me for the Usage Tutorial</summary>
