@@ -12,6 +12,17 @@ This tool is intended solely for educational purposes,
 such as learning how Keyauth works. 
 Use it only on applications that you own or have explicit permission to use.
 ```
+
+# End of support
+
+Hi everyone, this project is finished. I don't think anything more is needed as the Only problem is that Variables or Files can't be accessed from keyauth servers which will never possible regardless.
+
+Once again thx to github.com/SamuelTulach for creating it and yeah
+
+Have fun
+
+# You can do any pull requests, i'll check them and approve or disapprove then
+
 <details>
   <summary>Click me for the Usage Tutorial</summary>
   
