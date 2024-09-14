@@ -19,7 +19,7 @@ Hi everyone, this project is finished. I don't think anything more is needed as 
 
 Once again thx to github.com/SamuelTulach for creating it and yeah
 
-Have fun
+Have fun, btw don't dare to dm me about help or i will just block your ass
 
 # You can do any pull requests, i'll check them and approve or disapprove then
 
