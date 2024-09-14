@@ -75,7 +75,7 @@ void Console::Title(const char* name, const char* subtext)
 {
     const HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    SetConsoleTextAttribute(consoleHandle, static_cast<WORD>(Console::Color::Purple));
+    SetConsoleTextAttribute(consoleHandle, static_cast<WORD>(Console::Color::White));
     printf("%s\n", name);
 
     SetConsoleTextAttribute(consoleHandle, static_cast<WORD>(Console::Color::DarkWhite));

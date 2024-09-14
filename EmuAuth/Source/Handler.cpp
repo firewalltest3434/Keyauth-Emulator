@@ -78,7 +78,7 @@ void Handler::HandleLogin(const httplib::Params& data, const httplib::Request&, 
 
 void Handler::HandleCheckBlacklist(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling API CHECKBLACKLIST request...");
+    Console::Info("Handling API Checkblacklist request...");
 
     std::string hwid = data.find("hwid")->second;
     std::string sessionId = data.find("sessionid")->second;
@@ -117,12 +117,12 @@ void Handler::HandleCheckBlacklist(const httplib::Params& data, const httplib::R
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("CHECKBLACKLIST request handled");
+    Console::Success("Checkblacklist request handled");
 }
 
 void Handler::HandleLicense(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling API LICENSE request...");
+    Console::Info("Handling API License request...");
 
     std::string licenseKey = data.find("key")->second;
     std::string hwid = data.find("hwid")->second;
@@ -175,7 +175,7 @@ void Handler::HandleLicense(const httplib::Params& data, const httplib::Request&
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("LICENSE request handled");
+    Console::Success("License request handled");
 }
 
 void Handler::HandleSession(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
@@ -205,7 +205,7 @@ void Handler::HandleSession(const httplib::Params& data, const httplib::Request&
 
 void Handler::HandleVar(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling API Var Check...");
+    Console::Info("Handling API Variable Check...");
 
     std::string sessionId = data.find("sessionid")->second;
     Console::Debug("Session ID: %s", sessionId.c_str());
@@ -213,7 +213,7 @@ void Handler::HandleVar(const httplib::Params& data, const httplib::Request&, ht
     nlohmann::json output =
     {
     {"success", true},
-    {"message", "idk"},
+    {"message", "YourMessageHere"},
     {"nonce", Utils::GenerateRandomString(32)}
     };
 
@@ -226,12 +226,12 @@ void Handler::HandleVar(const httplib::Params& data, const httplib::Request&, ht
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("Var shit handled");
+    Console::Success("Variable Check handled");
 }
 
 void Handler::HandleLog(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling Log Check...");
+    Console::Info("Handling Logging Check...");
 
     std::string sessionId = data.find("sessionid")->second;
     Console::Debug("Session ID: %s", sessionId.c_str());
@@ -251,7 +251,7 @@ void Handler::HandleLog(const httplib::Params& data, const httplib::Request&, ht
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("Log request handled");
+    Console::Success("Logging request handled");
 }
 
 void Handler::HandleBan(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
@@ -276,13 +276,13 @@ void Handler::HandleBan(const httplib::Params& data, const httplib::Request&, ht
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("Session Check request handled");
+    Console::Success("Ban request handled");
 }
 
 
 void Handler::HandleFile(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling API FILE request...");
+    Console::Info("Handling API File request...");
 
     std::string fileId = data.find("fileid")->second;
     std::string sessionId = data.find("sessionid")->second;
@@ -332,7 +332,59 @@ void Handler::HandleFile(const httplib::Params& data, const httplib::Request&, h
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("FILE request handled");
+    Console::Success("File request handled ( NOT REAL FILE )");
+}
+
+void Handler::Handlewebhook(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
+{
+    Console::Info("Handling API Webhook sending...");
+
+    std::string sessionId = data.find("sessionid")->second;
+    Console::Debug("Session ID: %s", sessionId.c_str());
+
+    nlohmann::json output =
+    {
+    {"success", true},
+    {"message", "Tanzverbot"},
+    {"nonce", Utils::GenerateRandomString(32)}
+    };
+
+    std::string json = output.dump();
+    std::string checksum = Utils::GenerateHMAC(Global::EncryptionKey, json);
+
+    Console::Debug("Using signature: %s", checksum.c_str());
+    Console::Debug("JSON: %s", json.c_str());
+
+    res.set_header("signature", checksum);
+    res.set_content(json, "application/json");
+
+    Console::Success("Webhook sending handled");
+}
+
+void Handler::HandleFetchShit(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
+{
+    Console::Info("Handling API Fetch request...");
+
+    std::string sessionId = data.find("sessionid")->second;
+    Console::Debug("Session ID: %s", sessionId.c_str());
+
+    nlohmann::json output =
+    {
+    {"success", true},
+    {"message", "fetchedmyass"},
+    {"nonce", Utils::GenerateRandomString(32)}
+    };
+
+    std::string json = output.dump();
+    std::string checksum = Utils::GenerateHMAC(Global::EncryptionKey, json);
+
+    Console::Debug("Using signature: %s", checksum.c_str());
+    Console::Debug("JSON: %s", json.c_str());
+
+    res.set_header("signature", checksum);
+    res.set_content(json, "application/json");
+
+    Console::Success("Fetch request handled");
 }
 
 void Handler::Process(const httplib::Request& req, httplib::Response& res)
@@ -401,6 +453,24 @@ void Handler::Process(const httplib::Request& req, httplib::Response& res)
     if (type == "getvar")
     {
         HandleVar(data, req, res);
+        return;
+    }
+
+    if (type == "webhook")
+    {
+        Handlewebhook(data, req, res);
+        return;
+    }
+
+    if (type == "fetchStats")
+    {
+        HandleFetchShit(data, req, res);
+        return;
+    }
+
+    if (type == "fetchOnline")
+    {
+        HandleFetchShit(data, req, res);
         return;
     }
 

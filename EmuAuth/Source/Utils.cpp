@@ -1,5 +1,6 @@
 #include "Global.h"
 
+
 std::string Utils::GenerateHMAC(const std::string& key, const std::string& message)
 {
     std::stringstream result;
