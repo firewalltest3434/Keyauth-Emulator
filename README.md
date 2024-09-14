@@ -15,7 +15,7 @@ Use it only on applications that you own or have explicit permission to use.
 <details>
   <summary>Click me for the Usage Tutorial</summary>
   
-## <a id="Changelog"></a>💻・Usage Tutorial
+## <a id="Changelog"></a>🔥・Usage Tutorial
 ```
 Step 1: Setup everything
 Add the generated root CA certificate to trusted root certificates
@@ -48,7 +48,7 @@ if everything worked fine and you got no errors then procced to open the Keyauth
 <details>
   <summary>Click me for the Compiling Tutorial</summary>
 
-## <a id="Changelog"></a>💻・Compiling
+## <a id="Changelog"></a>👷・Compiling
 ```
 1. install the OpenSSL 3.3.2 Windows Installer. 
 https://kb.firedaemon.com/support/solutions/articles/4000121705#Download-OpenSSL
@@ -63,7 +63,7 @@ https://kb.firedaemon.com/support/solutions/articles/4000121705#Download-OpenSSL
 <details>
   <summary>Click me for the Remote Hosting </summary>
 
-## <a id="Changelog"></a>💻・How to host the Emulator on a RDP
+## <a id="Changelog"></a>🖥️・How to host the Emulator on a RDP
 ```
 1. Get a Windows RDP
 2. Recompile the Emulator with the server IP instead of 127.0.0.1
