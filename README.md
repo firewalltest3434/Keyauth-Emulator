@@ -42,7 +42,12 @@ Step 3: Run it
 
 Once everything is done run Emulator.exe.
 
-if everything worked fine and you got no errors then procced to open the Keyauth Loader
+if everything worked fine and you got no errors then procced to open the cheat/spoofer Loader
+
+btw here is a tutorial on how to dump Drivers or DLL files since some use keyauth to download
+and that is not fakeable aka smth to bypass
+
+https://pastebin.com/raw/tWcqaHVC
 ```
 </details>
 
