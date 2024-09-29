@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <iostream>
 #include <filesystem>
-#include <C:\Users\PC\Desktop\My shit\reverse engineering\Keyauth\EmuAuth\Library\httplib.h>
+#include <httplib.h>
 #include <sstream>
 #include <vector>
 #include <iostream>
@@ -69,15 +69,18 @@ void changehostfile(const std::string& ipAddress, const std::string& hostname) {
 int main() {
     SetConsoleTitleA("Keyauth Server emulator");
 
-    std::cout << "What method do you want to use:\n\n";
-    std::cout << "1. Online\n";
-    std::cout << "2. Manual\n\n";
-    std::string mode = Console::ReadInput("Enter your choice (1 or 2): ");
+    Console::Title("Credits", "\nCreator: github.com/SamuelTulach\nFixer: github.com/yerrroo\nand me github.com/NotInnominate releasing it with updates");
+    Console::Warning("IF YOU BOUGHT THIS IT MEANS YOU GOT SCAMMED !!\n");
 
     if (!fs::exists("certs") || !fs::is_directory("certs")) {
         Console::Error("The 'certs' folder does not exist or is not in the same directory.");
         getchar();
     }
+
+    std::cout << "What method do you want to use:\n\n";
+    std::cout << "1. Online\n";
+    std::cout << "2. Manual\n\n";
+    std::string mode = Console::ReadInput("Enter your choice (1 or 2): ");
 
     if (mode == "1") {
         system("cls");

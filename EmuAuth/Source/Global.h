@@ -18,6 +18,4 @@ namespace Global
 {
     inline std::string Secret;
     inline std::string EncryptionKey;
-    inline std::string UpdateLink; // TODO
-    inline std::string Version; // TODO
 }
