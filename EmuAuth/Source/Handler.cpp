@@ -12,16 +12,16 @@ void Handler::HandleInit(const httplib::Params& data, const httplib::Request&, h
     nlohmann::json output = {
       {"success", true},
       {"message", "Initialized"},
-      {"sessionid", "emulatedlol"},
+      {"sessionid", Utils::GenerateRandomString(5)},
       {"appinfo", {
         {"numUsers", "N/A"},
         {"numOnlineUsers", "N/A"},
         {"numKeys", "N/A"},
-        {"version", "1.1"},
+        {"version", "2.0"},
         {"customerPanelLink", "https://keyauth.cc/panel/xxx"},
       }},
       {"newSession", true},
-      {"nonce", "feeddead"}
+      {"nonce", Utils::GenerateRandomString(32)}
     };
 
     std::string json = output.dump();
@@ -33,7 +33,7 @@ void Handler::HandleInit(const httplib::Params& data, const httplib::Request&, h
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("INIT request handled");
+    Console::Success("Init request handled");
 }
 
 void Handler::HandleLogin(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
@@ -51,8 +51,8 @@ void Handler::HandleLogin(const httplib::Params& data, const httplib::Request&, 
         {
                 {"username", "Kollegah"},
                 {"subscriptions", {{
-                    {"subscription", "Gta6Premium"},
-                    {"key", "T3RpIG1ha2UgdGhpcyBzaGl0IHdvcms="}, // ;)
+                    {"subscription", "Default"},
+                    {"key", "SW5ub21pbmF0ZQ=="}, 
                     {"expiry", "2031259554"},
                     {"timeleft", 315569071}
                 }}},
@@ -73,12 +73,12 @@ void Handler::HandleLogin(const httplib::Params& data, const httplib::Request&, 
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("LOGIN request handled");
+    Console::Success("Login request handled");
 }
 
 void Handler::HandleCheckBlacklist(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling API Checkblacklist request...");
+    Console::Info("Handling API Blacklist Check request...");
 
     std::string hwid = data.find("hwid")->second;
     std::string sessionId = data.find("sessionid")->second;
@@ -117,7 +117,7 @@ void Handler::HandleCheckBlacklist(const httplib::Params& data, const httplib::R
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("Checkblacklist request handled");
+    Console::Success("Blacklist Check request handled");
 }
 
 void Handler::HandleLicense(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
@@ -127,9 +127,9 @@ void Handler::HandleLicense(const httplib::Params& data, const httplib::Request&
     std::string licenseKey = data.find("key")->second;
     std::string hwid = data.find("hwid")->second;
     std::string sessionId = data.find("sessionid")->second;
-    Console::Debug("License Key: %s", licenseKey.c_str());
-    Console::Debug("HWID: %s", hwid.c_str());
-    Console::Debug("Session ID: %s", sessionId.c_str());
+    //Console::Debug("License Key: %s", licenseKey.c_str());
+    //Console::Debug("HWID: %s", hwid.c_str());
+    //Console::Debug("Session ID: %s", sessionId.c_str());
 
     bool isLicenseValid = true;
 
@@ -144,13 +144,13 @@ void Handler::HandleLicense(const httplib::Params& data, const httplib::Request&
             {
                 {"username", "Kollegah"},
                 {"subscriptions", {{
-                    {"subscription", "Gta6Premium"},
-                    {"key", "T3RpIG1ha2UgdGhpcyBzaGl0IHdvcms="}, // pls
+                    {"subscription", "Default"},
+                    {"key", "SW5ub21pbmF0ZQ=="}, 
                     {"expiry", "2031259554"},
                     {"timeleft", 315569071}
                 }}},
                 {"ip", "88.88.88.88"},
-                {"hwid", "FBI-GOVERMENT-PC"},
+                {"hwid", Utils::GenerateRandomString(10)},
                 {"createdate", "6942010069"},
                 {"lastlogin", "9876543210"}
             }},
@@ -188,7 +188,7 @@ void Handler::HandleSession(const httplib::Params& data, const httplib::Request&
     nlohmann::json output =
     {
     {"success", true},
-    {"message", "I am real gangster!"},
+    {"message", "I am a real session !"},
     };
 
     std::string json = output.dump();
@@ -213,7 +213,7 @@ void Handler::HandleVar(const httplib::Params& data, const httplib::Request&, ht
     nlohmann::json output =
     {
     {"success", true},
-    {"message", "YourMessageHere"},
+    {"message", "I am a variable :)"},
     {"nonce", Utils::GenerateRandomString(32)}
     };
 
@@ -231,7 +231,7 @@ void Handler::HandleVar(const httplib::Params& data, const httplib::Request&, ht
 
 void Handler::HandleLog(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling Logging Check...");
+    Console::Info("Handling API Logging Check...");
 
     std::string sessionId = data.find("sessionid")->second;
     Console::Debug("Session ID: %s", sessionId.c_str());
@@ -239,7 +239,7 @@ void Handler::HandleLog(const httplib::Params& data, const httplib::Request&, ht
     nlohmann::json output =
     {
     {"success", true},
-    {"message", "No logs for me hehehe"},
+    {"message", "Computer says yes but actually no"},
     };
 
     std::string json = output.dump();
@@ -264,7 +264,7 @@ void Handler::HandleBan(const httplib::Params& data, const httplib::Request&, ht
     nlohmann::json output =
     {
     {"success", false},
-    {"message", "Nuh uh!"},
+    {"message", "Computer says no"},
     };
 
     std::string json = output.dump();
@@ -337,7 +337,7 @@ void Handler::HandleFile(const httplib::Params& data, const httplib::Request&, h
 
 void Handler::Handlewebhook(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
 {
-    Console::Info("Handling API Webhook sending...");
+    Console::Info("Handling API Webhook request...");
 
     std::string sessionId = data.find("sessionid")->second;
     Console::Debug("Session ID: %s", sessionId.c_str());
@@ -358,7 +358,7 @@ void Handler::Handlewebhook(const httplib::Params& data, const httplib::Request&
     res.set_header("signature", checksum);
     res.set_content(json, "application/json");
 
-    Console::Success("Webhook sending handled");
+    Console::Success("Webhook request handled");
 }
 
 void Handler::HandleFetchShit(const httplib::Params& data, const httplib::Request&, httplib::Response& res)
